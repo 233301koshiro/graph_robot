@@ -1,0 +1,114 @@
+robot:
+  model: /userdir/graph_robot.body
+  name: BodyBuilder
+  initial_coords:
+    pos:
+    - 0.0
+    - 0.0
+    - 0.0
+  initial_joint_angles:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  fix: true
+  BodyROSItem:
+    name_space: BodyBuilder
+  ROSControlItem:
+    name_space: BodyBuilder
+world:
+  World:
+    name: MyWorld
+  Simulator:
+    type: AISTSimulator
+    name: AISTSim
+  GLVision: null
+  Camera:
+    lookEye:
+    - 0.0
+    - 3.0
+    - 1.7
+    lookUp:
+    - 0.0
+    - 0.0
+    - 1.0
+    lookAtCenter:
+    - 0.0
+    - 0.0
+    - 0.7
+  WorldROS: null
+  ROS:
+    generate:
+      robot: /userdir/graph_robot.body
+      name_space: BodyBuilder
+      controllers:
+      - name: joint_controller
+        type: position
+        joints:
+        - L0
+        - L0_ballx
+        - L0_bally
+        - L1
+        - L1_ballx
+        - L1_bally
+        - L2
+        - L2_ballx
+        - L2_bally
+        - L3
+        - L3_ballx
+        - L3_bally
+        - L4
+        - L4_ballx
+        - L4_bally
+        - L5
+        - L5_ballx
+        - L5_bally
+        - L6
+        - L6_ballx
+        - L6_bally
+        - L7
+        - L7_ballx
+        - L7_bally
+        - L8
+        - L8_ballx
+        - L8_bally
+        - L9
+        - L9_ballx
+        - L9_bally
+objects:
+- model: choreonoid://share/model/misc/floor.body
+  name: MyFloor
+  fix: true
+- model: /userdir/red_sphere.body
+  name: MyShpere
+  initial_coords: { pos: [3.5, -3.5, 1.0], aa: [0, 0, 0, 0] }
+  fix: false
+- model: /userdir/box.body
+  name: box1
+  fix: true

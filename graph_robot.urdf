@@ -1,0 +1,1088 @@
+<?xml version="1.0"?>
+<robot name="BodyBuilder" xmlns:xi="http://www.w3.org/2001/Xinclude" xmlns:gazebo="http://playerstage.sourceforge.net/gazebo/xmlschema/#gz" xmlns:model="http://playerstage.sourceforge.net/gazebo/xmlschema/#model" xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor" xmlns:body="http://playerstage.sourceforge.net/gazebo/xmlschema/#body" xmlns:geom="http://playerstage.sourceforge.net/gazebo/xmlschema/#geom" xmlns:joint="http://playerstage.sourceforge.net/gazebo/xmlschema/#joint" xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface" xmlns:rendering="http://playerstage.sourceforge.net/gazebo/xmlschema/#rendering" xmlns:renderable="http://playerstage.sourceforge.net/gazebo/xmlschema/#renderable" xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller" xmlns:physics="http://playerstage.sourceforge.net/gazebo/xmlschema/#physics" xmlns:xacro="http://www.ros.org/wiki/xacro">
+ <xacro:macro name="gz_trans_pos" params="joint_name">
+  <transmission name="${joint_name}_trans">
+   <type>transmission_interface/SimpleTransmission</type>
+   <joint name="${joint_name}">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+   </joint>
+   <actuator name="${joint_name}_motor">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+   </actuator>
+  </transmission>
+ </xacro:macro>
+ <xacro:macro name="gz_trans_vel" params="joint_name">
+  <transmission name="${joint_name}_trans">
+   <type>transmission_interface/SimpleTransmission</type>
+   <joint name="${joint_name}">
+    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+   </joint>
+   <actuator name="${joint_name}_motor">
+    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+   </actuator>
+  </transmission>
+ </xacro:macro>
+ <xacro:macro name="gz_trans_eff" params="joint_name">
+  <transmission name="${joint_name}_trans">
+   <type>transmission_interface/SimpleTransmission</type>
+   <joint name="${joint_name}">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+   </joint>
+   <actuator name="${joint_name}_motor">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+   </actuator>
+  </transmission>
+ </xacro:macro>
+ <link name="Root">
+  <visual>
+   <origin xyz="0.000000000000e+00 -1.000000000000e-01 3.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__0">
+    <color rgba="0 0 0.28 1" />
+   </material>
+  </visual>
+  <visual>
+   <origin xyz="0.000000000000e+00 3.330669073880e-16 1.500000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <cylinder radius="0.059999999999999998" length="3" />
+   </geometry>
+   <material name="mat__1">
+    <color rgba="0 0.7 0 1" />
+   </material>
+  </visual>
+  <collision>
+   <origin xyz="0.000000000000e+00 -1.000000000000e-01 3.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__2">
+    <color rgba="0 0 0.28 1" />
+   </material>
+  </collision>
+  <collision>
+   <origin xyz="0.000000000000e+00 3.330669073880e-16 1.500000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <cylinder radius="0.059999999999999998" length="3" />
+   </geometry>
+   <material name="mat__3">
+    <color rgba="0 0.7 0 1" />
+   </material>
+  </collision>
+  <inertial>
+   <mass value="41.929200000000002" />
+   <origin xyz="0.000000000000e+00 -1.907980000000e-02 1.786200000000e+00" />
+   <inertia ixx="40.161099999999998" ixy="0" ixz="0" iyy="40.096400000000003" iyz="0.97104299999999999" izz="0.179142" />
+  </inertial>
+ </link>
+ <link name="L6_ballx">
+  <inertial>
+   <mass value="0.10000000000000001" />
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+   <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+  </inertial>
+ </link>
+ <joint name="L6_ballx" type="continuous">
+  <parent link="Root" />
+  <child link="L6_ballx" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 3.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="1.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L6_ballx" />
+ <link name="L6_bally">
+  <inertial>
+   <mass value="0.10000000000000001" />
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+   <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+  </inertial>
+ </link>
+ <joint name="L6_bally" type="continuous">
+  <parent link="L6_ballx" />
+  <child link="L6_bally" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="0.000000000000e+00 1.000000000000e+00 0.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L6_bally" />
+ <link name="L6">
+  <visual>
+   <origin xyz="0.000000000000e+00 -1.000000000000e-01 -1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__4">
+    <color rgba="0 0 0.28 1" />
+   </material>
+  </visual>
+  <visual>
+   <origin xyz="0.000000000000e+00 1.000000000000e-01 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__5">
+    <color rgba="0 0 0.56 1" />
+   </material>
+  </visual>
+  <visual>
+   <origin xyz="0.000000000000e+00 -1.000000000000e-01 1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__6">
+    <color rgba="0 0 0.28 1" />
+   </material>
+  </visual>
+  <visual>
+   <origin xyz="0.000000000000e+00 1.110223024630e-16 -5.000000000000e-01" rpy="-3.141592653590e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <cylinder radius="0.059999999999999998" length="1" />
+   </geometry>
+   <material name="mat__7">
+    <color rgba="0 0.7 0 1" />
+   </material>
+  </visual>
+  <visual>
+   <origin xyz="0.000000000000e+00 1.110223024630e-16 5.000000000000e-01" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <cylinder radius="0.059999999999999998" length="1" />
+   </geometry>
+   <material name="mat__8">
+    <color rgba="0 0.7 0 1" />
+   </material>
+  </visual>
+  <collision>
+   <origin xyz="0.000000000000e+00 -1.000000000000e-01 -1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__9">
+    <color rgba="0 0 0.28 1" />
+   </material>
+  </collision>
+  <collision>
+   <origin xyz="0.000000000000e+00 1.000000000000e-01 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__10">
+    <color rgba="0 0 0.56 1" />
+   </material>
+  </collision>
+  <collision>
+   <origin xyz="0.000000000000e+00 -1.000000000000e-01 1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__11">
+    <color rgba="0 0 0.28 1" />
+   </material>
+  </collision>
+  <collision>
+   <origin xyz="0.000000000000e+00 1.110223024630e-16 -5.000000000000e-01" rpy="-3.141592653590e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <cylinder radius="0.059999999999999998" length="1" />
+   </geometry>
+   <material name="mat__12">
+    <color rgba="0 0.7 0 1" />
+   </material>
+  </collision>
+  <collision>
+   <origin xyz="0.000000000000e+00 1.110223024630e-16 5.000000000000e-01" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <cylinder radius="0.059999999999999998" length="1" />
+   </geometry>
+   <material name="mat__13">
+    <color rgba="0 0.7 0 1" />
+   </material>
+  </collision>
+  <inertial>
+   <mass value="46.619500000000002" />
+   <origin xyz="0.000000000000e+00 -1.716020000000e-02 0.000000000000e+00" />
+   <inertia ixx="23.9465" ixy="0" ixz="0" iyy="23.720199999999998" iyz="0" izz="0.42698700000000001" />
+  </inertial>
+ </link>
+ <joint name="L6" type="continuous">
+  <parent link="L6_bally" />
+  <child link="L6" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="0.000000000000e+00 0.000000000000e+00 1.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L6" />
+ <link name="L0_ballx">
+  <inertial>
+   <mass value="0.10000000000000001" />
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+   <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+  </inertial>
+ </link>
+ <joint name="L0_ballx" type="continuous">
+  <parent link="L6" />
+  <child link="L0_ballx" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 -1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="1.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L0_ballx" />
+ <link name="L0_bally">
+  <inertial>
+   <mass value="0.10000000000000001" />
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+   <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+  </inertial>
+ </link>
+ <joint name="L0_bally" type="continuous">
+  <parent link="L0_ballx" />
+  <child link="L0_bally" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="0.000000000000e+00 1.000000000000e+00 0.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L0_bally" />
+ <link name="L0">
+  <visual>
+   <origin xyz="0.000000000000e+00 -1.000000000000e-01 -1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__14">
+    <color rgba="0 0 0.28 1" />
+   </material>
+  </visual>
+  <visual>
+   <origin xyz="0.000000000000e+00 1.000000000000e-01 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__15">
+    <color rgba="0 0 0.56 1" />
+   </material>
+  </visual>
+  <visual>
+   <origin xyz="0.000000000000e+00 -1.000000000000e-01 1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__16">
+    <color rgba="0 0 0.28 1" />
+   </material>
+  </visual>
+  <visual>
+   <origin xyz="0.000000000000e+00 -1.000000000000e-01 1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__17">
+    <color rgba="0 0 0.28 1" />
+   </material>
+  </visual>
+  <visual>
+   <origin xyz="0.000000000000e+00 1.110223024630e-16 -5.000000000000e-01" rpy="-3.141592653590e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <cylinder radius="0.059999999999999998" length="1" />
+   </geometry>
+   <material name="mat__18">
+    <color rgba="0 0.7 0 1" />
+   </material>
+  </visual>
+  <visual>
+   <origin xyz="0.000000000000e+00 1.110223024630e-16 5.000000000000e-01" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <cylinder radius="0.059999999999999998" length="1" />
+   </geometry>
+   <material name="mat__19">
+    <color rgba="0 0.7 0 1" />
+   </material>
+  </visual>
+  <visual>
+   <origin xyz="0.000000000000e+00 1.110223024630e-16 5.000000000000e-01" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <cylinder radius="0.059999999999999998" length="1" />
+   </geometry>
+   <material name="mat__20">
+    <color rgba="0 0.7 0 1" />
+   </material>
+  </visual>
+  <collision>
+   <origin xyz="0.000000000000e+00 -1.000000000000e-01 -1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__21">
+    <color rgba="0 0 0.28 1" />
+   </material>
+  </collision>
+  <collision>
+   <origin xyz="0.000000000000e+00 1.000000000000e-01 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__22">
+    <color rgba="0 0 0.56 1" />
+   </material>
+  </collision>
+  <collision>
+   <origin xyz="0.000000000000e+00 -1.000000000000e-01 1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__23">
+    <color rgba="0 0 0.28 1" />
+   </material>
+  </collision>
+  <collision>
+   <origin xyz="0.000000000000e+00 -1.000000000000e-01 1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__24">
+    <color rgba="0 0 0.28 1" />
+   </material>
+  </collision>
+  <collision>
+   <origin xyz="0.000000000000e+00 1.110223024630e-16 -5.000000000000e-01" rpy="-3.141592653590e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <cylinder radius="0.059999999999999998" length="1" />
+   </geometry>
+   <material name="mat__25">
+    <color rgba="0 0.7 0 1" />
+   </material>
+  </collision>
+  <collision>
+   <origin xyz="0.000000000000e+00 1.110223024630e-16 5.000000000000e-01" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <cylinder radius="0.059999999999999998" length="1" />
+   </geometry>
+   <material name="mat__26">
+    <color rgba="0 0.7 0 1" />
+   </material>
+  </collision>
+  <collision>
+   <origin xyz="0.000000000000e+00 1.110223024630e-16 5.000000000000e-01" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <cylinder radius="0.059999999999999998" length="1" />
+   </geometry>
+   <material name="mat__27">
+    <color rgba="0 0.7 0 1" />
+   </material>
+  </collision>
+  <inertial>
+   <mass value="65.929199999999994" />
+   <origin xyz="0.000000000000e+00 -2.426850000000e-02 2.071140000000e-01" />
+   <inertia ixx="33.006700000000002" ixy="0" ixz="0" iyy="32.725499999999997" iyz="0.46861700000000001" izz="0.55557599999999996" />
+  </inertial>
+ </link>
+ <joint name="L0" type="continuous">
+  <parent link="L0_bally" />
+  <child link="L0" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="0.000000000000e+00 0.000000000000e+00 1.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L0" />
+ <link name="L7_ballx">
+  <inertial>
+   <mass value="0.10000000000000001" />
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+   <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+  </inertial>
+ </link>
+ <joint name="L7_ballx" type="continuous">
+  <parent link="L0" />
+  <child link="L7_ballx" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 -1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="1.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L7_ballx" />
+ <link name="L7_bally">
+  <inertial>
+   <mass value="0.10000000000000001" />
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+   <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+  </inertial>
+ </link>
+ <joint name="L7_bally" type="continuous">
+  <parent link="L7_ballx" />
+  <child link="L7_bally" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="0.000000000000e+00 1.000000000000e+00 0.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L7_bally" />
+ <link name="L7">
+  <visual>
+   <origin xyz="0.000000000000e+00 1.000000000000e-01 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__28">
+    <color rgba="0 0 0.56 1" />
+   </material>
+  </visual>
+  <visual>
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 -1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 1.500000000000e+00 3.000000000000e+00" />
+   </geometry>
+   <material name="mat__29">
+    <color rgba="0.7 0 0 1" />
+   </material>
+  </visual>
+  <collision>
+   <origin xyz="0.000000000000e+00 1.000000000000e-01 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__30">
+    <color rgba="0 0 0.56 1" />
+   </material>
+  </collision>
+  <collision>
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 -1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 1.500000000000e+00 3.000000000000e+00" />
+   </geometry>
+   <material name="mat__31">
+    <color rgba="0.7 0 0 1" />
+   </material>
+  </collision>
+  <inertial>
+   <mass value="908" />
+   <origin xyz="0.000000000000e+00 8.810570000000e-04 -9.911890000000e-01" />
+   <inertia ixx="851.81200000000001" ixy="0" ixz="0" iyy="685.98299999999995" iyz="-0.79295199999999999" izz="340.63299999999998" />
+  </inertial>
+ </link>
+ <joint name="L7" type="continuous">
+  <parent link="L7_bally" />
+  <child link="L7" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="0.000000000000e+00 0.000000000000e+00 1.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L7" />
+ <link name="L8_ballx">
+  <inertial>
+   <mass value="0.10000000000000001" />
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+   <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+  </inertial>
+ </link>
+ <joint name="L8_ballx" type="continuous">
+  <parent link="L0" />
+  <child link="L8_ballx" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="1.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L8_ballx" />
+ <link name="L8_bally">
+  <inertial>
+   <mass value="0.10000000000000001" />
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+   <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+  </inertial>
+ </link>
+ <joint name="L8_bally" type="continuous">
+  <parent link="L8_ballx" />
+  <child link="L8_bally" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="0.000000000000e+00 1.000000000000e+00 0.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L8_bally" />
+ <link name="L8">
+  <visual>
+   <origin xyz="0.000000000000e+00 1.000000000000e-01 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__32">
+    <color rgba="0 0 0.56 1" />
+   </material>
+  </visual>
+  <visual>
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 1.500000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 1.500000000000e+00 3.000000000000e+00" />
+   </geometry>
+   <material name="mat__33">
+    <color rgba="0.7 0 0 1" />
+   </material>
+  </visual>
+  <collision>
+   <origin xyz="0.000000000000e+00 1.000000000000e-01 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__34">
+    <color rgba="0 0 0.56 1" />
+   </material>
+  </collision>
+  <collision>
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 1.500000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 1.500000000000e+00 3.000000000000e+00" />
+   </geometry>
+   <material name="mat__35">
+    <color rgba="0.7 0 0 1" />
+   </material>
+  </collision>
+  <inertial>
+   <mass value="908" />
+   <origin xyz="0.000000000000e+00 8.810570000000e-04 1.486780000000e+00" />
+   <inertia ixx="861.72400000000005" ixy="0" ixz="0" iyy="695.89499999999998" iyz="1.18943" izz="340.63299999999998" />
+  </inertial>
+ </link>
+ <joint name="L8" type="continuous">
+  <parent link="L8_bally" />
+  <child link="L8" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="0.000000000000e+00 0.000000000000e+00 1.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L8" />
+ <link name="L9_ballx">
+  <inertial>
+   <mass value="0.10000000000000001" />
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+   <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+  </inertial>
+ </link>
+ <joint name="L9_ballx" type="continuous">
+  <parent link="L0" />
+  <child link="L9_ballx" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="1.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L9_ballx" />
+ <link name="L9_bally">
+  <inertial>
+   <mass value="0.10000000000000001" />
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+   <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+  </inertial>
+ </link>
+ <joint name="L9_bally" type="continuous">
+  <parent link="L9_ballx" />
+  <child link="L9_bally" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="0.000000000000e+00 1.000000000000e+00 0.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L9_bally" />
+ <link name="L9">
+  <visual>
+   <origin xyz="0.000000000000e+00 1.000000000000e-01 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__36">
+    <color rgba="0 0 0.56 1" />
+   </material>
+  </visual>
+  <visual>
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 1.500000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 1.500000000000e+00 3.000000000000e+00" />
+   </geometry>
+   <material name="mat__37">
+    <color rgba="0.7 0 0 1" />
+   </material>
+  </visual>
+  <collision>
+   <origin xyz="0.000000000000e+00 1.000000000000e-01 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__38">
+    <color rgba="0 0 0.56 1" />
+   </material>
+  </collision>
+  <collision>
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 1.500000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 1.500000000000e+00 3.000000000000e+00" />
+   </geometry>
+   <material name="mat__39">
+    <color rgba="0.7 0 0 1" />
+   </material>
+  </collision>
+  <inertial>
+   <mass value="908" />
+   <origin xyz="0.000000000000e+00 8.810570000000e-04 1.486780000000e+00" />
+   <inertia ixx="861.72400000000005" ixy="0" ixz="0" iyy="695.89499999999998" iyz="1.18943" izz="340.63299999999998" />
+  </inertial>
+ </link>
+ <joint name="L9" type="continuous">
+  <parent link="L9_bally" />
+  <child link="L9" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="0.000000000000e+00 0.000000000000e+00 1.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L9" />
+ <link name="L1_ballx">
+  <inertial>
+   <mass value="0.10000000000000001" />
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+   <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+  </inertial>
+ </link>
+ <joint name="L1_ballx" type="continuous">
+  <parent link="L6" />
+  <child link="L1_ballx" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="1.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L1_ballx" />
+ <link name="L1_bally">
+  <inertial>
+   <mass value="0.10000000000000001" />
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+   <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+  </inertial>
+ </link>
+ <joint name="L1_bally" type="continuous">
+  <parent link="L1_ballx" />
+  <child link="L1_bally" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="0.000000000000e+00 1.000000000000e+00 0.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L1_bally" />
+ <link name="L1">
+  <visual>
+   <origin xyz="0.000000000000e+00 1.000000000000e-01 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__40">
+    <color rgba="0 0 0.56 1" />
+   </material>
+  </visual>
+  <visual>
+   <origin xyz="0.000000000000e+00 -1.000000000000e-01 1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__41">
+    <color rgba="0 0 0.28 1" />
+   </material>
+  </visual>
+  <visual>
+   <origin xyz="0.000000000000e+00 1.110223024630e-16 5.000000000000e-01" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <cylinder radius="0.059999999999999998" length="1" />
+   </geometry>
+   <material name="mat__42">
+    <color rgba="0 0.7 0 1" />
+   </material>
+  </visual>
+  <collision>
+   <origin xyz="0.000000000000e+00 1.000000000000e-01 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__43">
+    <color rgba="0 0 0.56 1" />
+   </material>
+  </collision>
+  <collision>
+   <origin xyz="0.000000000000e+00 -1.000000000000e-01 1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__44">
+    <color rgba="0 0 0.28 1" />
+   </material>
+  </collision>
+  <collision>
+   <origin xyz="0.000000000000e+00 1.110223024630e-16 5.000000000000e-01" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <cylinder radius="0.059999999999999998" length="1" />
+   </geometry>
+   <material name="mat__45">
+    <color rgba="0 0.7 0 1" />
+   </material>
+  </collision>
+  <inertial>
+   <mass value="27.309699999999999" />
+   <origin xyz="0.000000000000e+00 4.597750000000e-17 5.000000000000e-01" />
+   <inertia ixx="5.2193199999999997" ixy="0" ixz="0" iyy="5.0593199999999996" iyz="0.80000000000000004" izz="0.287024" />
+  </inertial>
+ </link>
+ <joint name="L1" type="continuous">
+  <parent link="L1_bally" />
+  <child link="L1" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="0.000000000000e+00 0.000000000000e+00 1.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L1" />
+ <link name="L2_ballx">
+  <inertial>
+   <mass value="0.10000000000000001" />
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+   <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+  </inertial>
+ </link>
+ <joint name="L2_ballx" type="continuous">
+  <parent link="L1" />
+  <child link="L2_ballx" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="1.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L2_ballx" />
+ <link name="L2_bally">
+  <inertial>
+   <mass value="0.10000000000000001" />
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+   <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+  </inertial>
+ </link>
+ <joint name="L2_bally" type="continuous">
+  <parent link="L2_ballx" />
+  <child link="L2_bally" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="0.000000000000e+00 1.000000000000e+00 0.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L2_bally" />
+ <link name="L2">
+  <visual>
+   <origin xyz="0.000000000000e+00 1.000000000000e-01 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__46">
+    <color rgba="0 0 0.56 1" />
+   </material>
+  </visual>
+  <visual>
+   <origin xyz="0.000000000000e+00 -1.000000000000e-01 1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__47">
+    <color rgba="0 0 0.28 1" />
+   </material>
+  </visual>
+  <visual>
+   <origin xyz="0.000000000000e+00 1.110223024630e-16 5.000000000000e-01" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <cylinder radius="0.059999999999999998" length="1" />
+   </geometry>
+   <material name="mat__48">
+    <color rgba="0 0.7 0 1" />
+   </material>
+  </visual>
+  <collision>
+   <origin xyz="0.000000000000e+00 1.000000000000e-01 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__49">
+    <color rgba="0 0 0.56 1" />
+   </material>
+  </collision>
+  <collision>
+   <origin xyz="0.000000000000e+00 -1.000000000000e-01 1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__50">
+    <color rgba="0 0 0.28 1" />
+   </material>
+  </collision>
+  <collision>
+   <origin xyz="0.000000000000e+00 1.110223024630e-16 5.000000000000e-01" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <cylinder radius="0.059999999999999998" length="1" />
+   </geometry>
+   <material name="mat__51">
+    <color rgba="0 0.7 0 1" />
+   </material>
+  </collision>
+  <inertial>
+   <mass value="27.309699999999999" />
+   <origin xyz="0.000000000000e+00 4.597750000000e-17 5.000000000000e-01" />
+   <inertia ixx="5.2193199999999997" ixy="0" ixz="0" iyy="5.0593199999999996" iyz="0.80000000000000004" izz="0.287024" />
+  </inertial>
+ </link>
+ <joint name="L2" type="continuous">
+  <parent link="L2_bally" />
+  <child link="L2" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="0.000000000000e+00 0.000000000000e+00 1.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L2" />
+ <link name="L3_ballx">
+  <inertial>
+   <mass value="0.10000000000000001" />
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+   <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+  </inertial>
+ </link>
+ <joint name="L3_ballx" type="continuous">
+  <parent link="L2" />
+  <child link="L3_ballx" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="1.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L3_ballx" />
+ <link name="L3_bally">
+  <inertial>
+   <mass value="0.10000000000000001" />
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+   <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+  </inertial>
+ </link>
+ <joint name="L3_bally" type="continuous">
+  <parent link="L3_ballx" />
+  <child link="L3_bally" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="0.000000000000e+00 1.000000000000e+00 0.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L3_bally" />
+ <link name="L3">
+  <visual>
+   <origin xyz="0.000000000000e+00 1.000000000000e-01 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__52">
+    <color rgba="0 0 0.56 1" />
+   </material>
+  </visual>
+  <visual>
+   <origin xyz="0.000000000000e+00 -1.000000000000e-01 1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__53">
+    <color rgba="0 0 0.28 1" />
+   </material>
+  </visual>
+  <visual>
+   <origin xyz="0.000000000000e+00 1.110223024630e-16 5.000000000000e-01" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <cylinder radius="0.059999999999999998" length="1" />
+   </geometry>
+   <material name="mat__54">
+    <color rgba="0 0.7 0 1" />
+   </material>
+  </visual>
+  <collision>
+   <origin xyz="0.000000000000e+00 1.000000000000e-01 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__55">
+    <color rgba="0 0 0.56 1" />
+   </material>
+  </collision>
+  <collision>
+   <origin xyz="0.000000000000e+00 -1.000000000000e-01 1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__56">
+    <color rgba="0 0 0.28 1" />
+   </material>
+  </collision>
+  <collision>
+   <origin xyz="0.000000000000e+00 1.110223024630e-16 5.000000000000e-01" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <cylinder radius="0.059999999999999998" length="1" />
+   </geometry>
+   <material name="mat__57">
+    <color rgba="0 0.7 0 1" />
+   </material>
+  </collision>
+  <inertial>
+   <mass value="27.309699999999999" />
+   <origin xyz="0.000000000000e+00 4.597750000000e-17 5.000000000000e-01" />
+   <inertia ixx="5.2193199999999997" ixy="0" ixz="0" iyy="5.0593199999999996" iyz="0.80000000000000004" izz="0.287024" />
+  </inertial>
+ </link>
+ <joint name="L3" type="continuous">
+  <parent link="L3_bally" />
+  <child link="L3" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="0.000000000000e+00 0.000000000000e+00 1.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L3" />
+ <link name="L4_ballx">
+  <inertial>
+   <mass value="0.10000000000000001" />
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+   <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+  </inertial>
+ </link>
+ <joint name="L4_ballx" type="continuous">
+  <parent link="L3" />
+  <child link="L4_ballx" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="1.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L4_ballx" />
+ <link name="L4_bally">
+  <inertial>
+   <mass value="0.10000000000000001" />
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+   <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+  </inertial>
+ </link>
+ <joint name="L4_bally" type="continuous">
+  <parent link="L4_ballx" />
+  <child link="L4_bally" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="0.000000000000e+00 1.000000000000e+00 0.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L4_bally" />
+ <link name="L4">
+  <visual>
+   <origin xyz="0.000000000000e+00 1.000000000000e-01 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__58">
+    <color rgba="0 0 0.56 1" />
+   </material>
+  </visual>
+  <visual>
+   <origin xyz="0.000000000000e+00 -1.000000000000e-01 1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__59">
+    <color rgba="0 0 0.28 1" />
+   </material>
+  </visual>
+  <visual>
+   <origin xyz="0.000000000000e+00 1.110223024630e-16 5.000000000000e-01" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <cylinder radius="0.059999999999999998" length="1" />
+   </geometry>
+   <material name="mat__60">
+    <color rgba="0 0.7 0 1" />
+   </material>
+  </visual>
+  <collision>
+   <origin xyz="0.000000000000e+00 1.000000000000e-01 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__61">
+    <color rgba="0 0 0.56 1" />
+   </material>
+  </collision>
+  <collision>
+   <origin xyz="0.000000000000e+00 -1.000000000000e-01 1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__62">
+    <color rgba="0 0 0.28 1" />
+   </material>
+  </collision>
+  <collision>
+   <origin xyz="0.000000000000e+00 1.110223024630e-16 5.000000000000e-01" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <cylinder radius="0.059999999999999998" length="1" />
+   </geometry>
+   <material name="mat__63">
+    <color rgba="0 0.7 0 1" />
+   </material>
+  </collision>
+  <inertial>
+   <mass value="27.309699999999999" />
+   <origin xyz="0.000000000000e+00 4.597750000000e-17 5.000000000000e-01" />
+   <inertia ixx="5.2193199999999997" ixy="0" ixz="0" iyy="5.0593199999999996" iyz="0.80000000000000004" izz="0.287024" />
+  </inertial>
+ </link>
+ <joint name="L4" type="continuous">
+  <parent link="L4_bally" />
+  <child link="L4" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="0.000000000000e+00 0.000000000000e+00 1.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L4" />
+ <link name="L5_ballx">
+  <inertial>
+   <mass value="0.10000000000000001" />
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+   <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+  </inertial>
+ </link>
+ <joint name="L5_ballx" type="continuous">
+  <parent link="L4" />
+  <child link="L5_ballx" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 1.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="1.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L5_ballx" />
+ <link name="L5_bally">
+  <inertial>
+   <mass value="0.10000000000000001" />
+   <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" />
+   <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+  </inertial>
+ </link>
+ <joint name="L5_bally" type="continuous">
+  <parent link="L5_ballx" />
+  <child link="L5_bally" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="0.000000000000e+00 1.000000000000e+00 0.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L5_bally" />
+ <link name="L5">
+  <visual>
+   <origin xyz="0.000000000000e+00 1.000000000000e-01 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__64">
+    <color rgba="0 0 0.56 1" />
+   </material>
+  </visual>
+  <collision>
+   <origin xyz="0.000000000000e+00 1.000000000000e-01 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+   <geometry>
+    <box size="2.000000000000e-01 2.000000000000e-01 2.000000000000e-01" />
+   </geometry>
+   <material name="mat__65">
+    <color rgba="0 0 0.56 1" />
+   </material>
+  </collision>
+  <inertial>
+   <mass value="8" />
+   <origin xyz="0.000000000000e+00 1.000000000000e-01 0.000000000000e+00" />
+   <inertia ixx="0.0533333" ixy="0" ixz="0" iyy="0.0533333" iyz="0" izz="0.0533333" />
+  </inertial>
+ </link>
+ <joint name="L5" type="continuous">
+  <parent link="L5_bally" />
+  <child link="L5" />
+  <origin xyz="0.000000000000e+00 0.000000000000e+00 0.000000000000e+00" rpy="0.000000000000e+00 -0.000000000000e+00 0.000000000000e+00" />
+  <axis xyz="0.000000000000e+00 0.000000000000e+00 1.000000000000e+00" />
+  <limit lower="-1.7976931348623157e+308" upper="1.7976931348623157e+308" velocity="1.7976931348623157e+308" effort="1.7976931348623157e+308" />
+ </joint>
+ <xacro:gz_trans_pos joint_name="L5" />
+</robot>
+

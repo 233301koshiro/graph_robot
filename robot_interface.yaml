@@ -1,0 +1,26 @@
+robot_model:
+  name: BodyBuilder
+  url: 'file:////userdir/graph_robot.body'
+
+# mobile_base:
+#   type: geometry_msgs/Twist
+#   topic: /BodyBuilder/cmd_vel
+#   baselink: Root
+
+joint_groups:
+  -
+    name: default
+    topic: /BodyBuilder/joint_controller/command
+    # type: 'action' or 'command'
+    type: command
+    joint_names: ['L6_ballx', 'L6_bally', 'L6', 'L0_ballx', 'L0_bally', 'L0', 'L7_ballx', 'L7_bally', 'L7', 'L8_ballx', 'L8_bally', 'L8', 'L9_ballx', 'L9_bally', 'L9', 'L1_ballx', 'L1_bally', 'L1', 'L2_ballx', 'L2_bally', 'L2', 'L3_ballx', 'L3_bally', 'L3', 'L4_ballx', 'L4_bally', 'L4', 'L5_ballx', 'L5_bally', 'L5']
+
+devices:
+  -
+    topic: /BodyBuilder/joint_states
+    class: JointState
+    name: joint_state
+  -
+    topic: /BodyBuilder/joint_controller/state
+    class: JointTrajectoryState
+    name: joint_trajectory_state
